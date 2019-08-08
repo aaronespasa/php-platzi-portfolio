@@ -2,16 +2,18 @@
 
 namespace Models;
 
-// require_once 'BaseElement.php';
+use Illuminate\Database\Eloquent\Model;
 
-class Job extends BaseElement {
-    public function __construct($title, $description) {
-        $newTitle = 'Job: ' . $title;
-        $this->title = $newTitle;
-        $this->description = $description;
+class Job extends Model {
+    //public function __construct($title, $description) {
+        //$newTitle = 'Job: ' . $title;
+        //$this->title = $newTitle;
+        //$this->description = $description;
         // Get the parent constructor and don't create another new one 
         // parent::__construct($newTitle, $description);
-    }
+    //}
+
+    protected $table = 'jobs';
 
     public function getDurationAsString() {
         $years = floor($this->months / 12);
