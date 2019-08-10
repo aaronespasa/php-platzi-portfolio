@@ -1,4 +1,5 @@
 <?php
+
 use Models\{Job, Project};
 
 $jobs = Job::all();
