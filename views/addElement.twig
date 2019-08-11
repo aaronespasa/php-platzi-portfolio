@@ -4,7 +4,7 @@
 
 {% block content %}
   <!-- Add a job to database -->
-  <h1>Add Job</h1>
+  <h1 class="text-center"  style="margin-top:15px;">Add Job</h1>
     <div class="alert alert-primary" role="alert">
       {{ responseMessage }}
     </div>
@@ -15,17 +15,18 @@
         <input name="job_description" type="text"><br>
         <label for="">Logo:</label>
         <input name="job_logo" type="file"><br>
-        <input name="submit_job" type="submit" value="Submit">
+        <input name="submit_job" type="submit" value="Submit" class="btn btn-primary">
     </form>
   <!-- Add a project to database -->
-  <h1>Add Project</h1>
-<form action="/php-platzi-portfolio/public/element/add" enctype="multipart/form-data" method="POST">
+  <h1 class="text-center"  style="margin-top:15px;">Add Project</h1>
+    <form action="/php-platzi-portfolio/public/element/add" enctype="multipart/form-data" method="POST">
         <label for="">Title:</label>
         <input name="project_title" type="text"><br>
         <label for="">Description:</label>
         <input name="project_description" type="text"><br>
-        <label for="">Logo:</label>
-        <input name="project_logo" type="file"><br>
-        <input name="submit_project" type="submit" value="Submit">
+        <input name="submit_project" type="submit" value="Submit" class="btn btn-primary">
     </form>
+    <footer class="mw-75 p-3" style="position: absolute; bottom: 0;">
+            <a class="btn btn-secondary" href="/php-platzi-portfolio/public/">Go back</a>
+    </footer>
 {% endblock %}

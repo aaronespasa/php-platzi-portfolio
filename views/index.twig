@@ -39,10 +39,18 @@
                       <li class="work-position">
                           <h5>{{ job.title }}</h5>
                           <p>{{ job.description }}</p>
+                          <p>{{ job.months }} months</p>
                           {% if job.logo %}
-                            <img alt="Smiley face" src={{ job.logo }} height="100px" width="100px">
+                            <img alt="Job logo" src={{ job.logo }} height="100px" width="100px">
+                            <br>
                           {% endif %}
-                      {% endfor %}
+                          <strong>Achievements:</strong>
+                            <ul>
+                                <li>This is the first achievement.</li>
+                                <li>This is the first achievement.</li>
+                            </ul>
+                      </li>
+                  {% endfor %}
                   </ul>
               </div>
               <!-- Projects -->
@@ -98,7 +106,9 @@
       </div>
       <!-- Designed by -->
       <div class="row" id="resume-footer">
-          <a href="/php-platzi-portfolio/public/element/add">Add element</a>
+          <a class="btn btn-secondary mr-5" href="/php-platzi-portfolio/public/element/add">Add element</a>
+          <a class="btn btn-secondary mr-5" href="/php-platzi-portfolio/public/user/add">Sign up</a>
+          <a class="btn btn-secondary" href="/php-platzi-portfolio/public/login">Log in</a>
           <div class="col">
               Designed by @hectorbenitez
           </div>

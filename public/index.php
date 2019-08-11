@@ -8,9 +8,13 @@ error_reporting(E_ALL);
 // Composer
 require_once '../vendor/autoload.php';
 
+session_start();
+
+use Aura\Router\RouterContainer;
+use Zend\Diactoros\Response\RedirectResponse;
+
 // Eloquent
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Aura\Router\RouterContainer;
 
 $capsule = new Capsule;
 
@@ -46,40 +50,51 @@ $map->get('index', '/php-platzi-portfolio/public/', [
     'controller' => 'App\Controllers\IndexController',
     'action' => 'indexAction'
 ]);
+
 $map->get('addElement', '/php-platzi-portfolio/public/element/add', [
     'controller' => 'App\Controllers\ElementsController',
-    'action' => 'getAddElementAction'
+    'action' => 'getAddElementAction',
+    'auth' => true
 ]);
 $map->post('saveElement', '/php-platzi-portfolio/public/element/add', [
     'controller' => 'App\Controllers\ElementsController',
-    'action' => 'getAddElementAction'
+    'action' => 'getAddElementAction',
+    'auth' => true
 ]);
 
 $map->get('addUser', '/php-platzi-portfolio/public/user/add', [
     'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUserAction'
+    'action' => 'getAddUserAction',
+    'auth' => true
 ]);
 $map->post('saveUser', '/php-platzi-portfolio/public/user/add', [
     'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUserAction'
+    'action' => 'getAddUserAction',
+    'auth' => true
 ]);
+
+$map->get('loginForm', '/php-platzi-portfolio/public/login', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogin'
+]);
+$map->get('logout', '/php-platzi-portfolio/public/logout', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogout'
+]);
+$map->post('auth', '/php-platzi-portfolio/public/auth', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'postLogin'
+]);
+
+$map->get('admin', '/php-platzi-portfolio/public/admin', [
+    'controller' => 'App\Controllers\AdminController',
+    'action' => 'getIndex',
+    'auth' => true
+]);
+
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
-
-function printElement($element) {
-    // if($element->visible == false) {
-    //     return;
-    // }
-
-          echo '<p>' . $element->getDurationAsString() . '</p>';
-          echo '<strong>Achievements:</strong>';
-          echo '<ul>';
-            echo '<li>This is the first achievement.</li>';
-            echo '<li>This is the second achievement.</li>';
-          echo'</ul>';
-    echo '</li>';
- }
 
 if (!$route) {
     echo 'No route';
@@ -87,10 +102,24 @@ if (!$route) {
     $handlerData = $route->handler;
     $controllerName = $handlerData['controller'];
     $actionName = $handlerData['action'];
+    $needsAuth = $handlerData['auth'] ?? false;
 
     // El new va a instanciar una clase con el nombre del contenido de esta variable
     $controller = new $controllerName;
-    $response = $controller->$actionName($request);
 
+    $sessionUserId = $_SESSION['userId'] ?? null;
+    if($needsAuth && !$sessionUserId) {
+        $response = new RedirectResponse('/php-platzi-portfolio/public/login');
+    } else {
+        $response = $controller->$actionName($request);
+    }
+
+
+    foreach($response->getHeaders() as $name => $values) {
+        foreach($values as $value) {
+            header(sprintf('%s: %s', $name, $value), false);
+        }
+    }
+    http_response_code($response->getStatusCode());
     echo $response->getBody();
 }

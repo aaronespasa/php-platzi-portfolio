@@ -1,23 +1,24 @@
 {% extends "layout.twig" %}
 
-{% block title %}SignUp{% endblock %}
+{% block title %}Login
+{% endblock %}
 
 {% block content %}
         <!-- Add a new user to database -->
-        <h1 class="text-center" style="margin-top:15px;">Sign up</h1>
+        <h1 class="text-center" style="margin-top:15px;">Log in</h1>
         <div class="alert alert-primary" role="alert">
             {{ responseMessage }}
         </div>
-        <form action="/php-platzi-portfolio/public/user/add" method="POST">
+        <form action="/php-platzi-portfolio/public/auth" method="POST">
             <div class="form-group">
                 <label for="e-mail">Email:</label>
                 <input id="e-mail" name="email" placeholder="Type the email" type="email"><br>
             </div>
             <div class="form-group">
                 <label for="pass">Password (8 characters minimum):</label>
-                <input name="password" type="password" id="pass" required minlength="8" placeholder="Type the password"><br>
+                <input id="pass" minlength="8" name="password" placeholder="Type the password" type="password"><br>
             </div>
-            <input name="submit_user" type="submit" value="Sign up" class="btn btn-primary">
+            <input class="btn btn-primary" name="submit_login" type="submit" value="Log in">
         </form>
         <footer class="mw-75 p-3" style="position: absolute; bottom: 0;">
             <a class="btn btn-secondary" href="/php-platzi-portfolio/public/">Go back</a>
