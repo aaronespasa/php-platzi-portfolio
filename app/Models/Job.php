@@ -1,8 +1,12 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
+// interface Printable {
+//     public function getDescription();
+// }
 
 class Job extends Model {
     //public function __construct($title, $description) {
