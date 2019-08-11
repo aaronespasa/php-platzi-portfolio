@@ -1,34 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Element</title>
+{% extends "layout.twig" %}
 
-    <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Add a job to database -->
-    <h1>Add Job</h1>
-    <form action="/php-platzi-portfolio/public/element/add" method="POST">
-        <label for="">Title:</label>
-        <input type="text" name="job_title"><br>
-        <label for="">Description:</label>
-        <input type="text" name="job_description"><br>
-        <input type="submit" name="submit_job" value="Submit">
-    </form>
-    <!-- Add a project to database -->
-    <h1>Add Project</h1>
-    <form action="/php-platzi-portfolio/public/element/add" method="POST">
-        <label for="">Title:</label>
-        <input type="text" name="project_title"><br>
-        <label for="">Description:</label>
-        <input type="text" name="project_description"><br>
-        <input type="submit" name="submit_project" value="Submit">
-    </form>
-</body>
-</html>
+{% block title %}Add Element{% endblock %}
+
+{% block content %}
+  <!-- Add a job to database -->
+  <h1>Add Job</h1>
+  <form action="/php-platzi-portfolio/public/element/add" method="POST">
+      <label for="">Title:</label>
+      <input name="job_title" type="text"><br>
+      <label for="">Description:</label>
+      <input name="job_description" type="text"><br>
+      <input name="submit_job" type="submit" value="Submit">
+  </form>
+  <!-- Add a project to database -->
+  <h1>Add Project</h1>
+  <form action="/php-platzi-portfolio/public/element/add" method="POST">
+      <label for="">Title:</label>
+      <input name="project_title" type="text"><br>
+      <label for="">Description:</label>
+      <input name="project_description" type="text"><br>
+      <input name="submit_project" type="submit" value="Submit">
+  </form>
+{% endblock %}

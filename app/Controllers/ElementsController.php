@@ -27,6 +27,6 @@ class ElementsController extends BaseController {
             }
         }
 
-        echo $this->renderHTML('addElement.twig');
+        return $this->renderHTML('addElement.twig');
     } 
 }

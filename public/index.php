@@ -63,9 +63,9 @@ function printElement($element) {
     //     return;
     // }
 
-    echo '<li class="work-position">';
+    echo '';
           echo '<h5>' . $element->title . '</h5>';
-          echo '<p>' . $element->description . '</p>';
+          echo '';
         //   echo '<p>' . $element->months . '</p>';
           echo '<p>' . $element->getDurationAsString() . '</p>';
           echo '<strong>Achievements:</strong>';
@@ -85,5 +85,7 @@ if (!$route) {
 
     // El new va a instanciar una clase con el nombre del contenido de esta variable
     $controller = new $controllerName;
-    $controller->$actionName($request);
+    $response = $controller->$actionName($request);
+
+    echo $response->getBody();
 }
