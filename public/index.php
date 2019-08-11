@@ -55,6 +55,15 @@ $map->post('saveElement', '/php-platzi-portfolio/public/element/add', [
     'action' => 'getAddElementAction'
 ]);
 
+$map->get('addUser', '/php-platzi-portfolio/public/user/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
+$map->post('saveUser', '/php-platzi-portfolio/public/user/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
@@ -63,10 +72,6 @@ function printElement($element) {
     //     return;
     // }
 
-    echo '';
-          echo '<h5>' . $element->title . '</h5>';
-          echo '';
-        //   echo '<p>' . $element->months . '</p>';
           echo '<p>' . $element->getDurationAsString() . '</p>';
           echo '<strong>Achievements:</strong>';
           echo '<ul>';

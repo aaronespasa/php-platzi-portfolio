@@ -5,20 +5,27 @@
 {% block content %}
   <!-- Add a job to database -->
   <h1>Add Job</h1>
-  <form action="/php-platzi-portfolio/public/element/add" method="POST">
-      <label for="">Title:</label>
-      <input name="job_title" type="text"><br>
-      <label for="">Description:</label>
-      <input name="job_description" type="text"><br>
-      <input name="submit_job" type="submit" value="Submit">
-  </form>
+    <div class="alert alert-primary" role="alert">
+      {{ responseMessage }}
+    </div>
+    <form action="/php-platzi-portfolio/public/element/add" method="POST" enctype="multipart/form-data">
+        <label for="">Title:</label>
+        <input name="job_title" type="text"><br>
+        <label for="">Description:</label>
+        <input name="job_description" type="text"><br>
+        <label for="">Logo:</label>
+        <input name="job_logo" type="file"><br>
+        <input name="submit_job" type="submit" value="Submit">
+    </form>
   <!-- Add a project to database -->
   <h1>Add Project</h1>
-  <form action="/php-platzi-portfolio/public/element/add" method="POST">
-      <label for="">Title:</label>
-      <input name="project_title" type="text"><br>
-      <label for="">Description:</label>
-      <input name="project_description" type="text"><br>
-      <input name="submit_project" type="submit" value="Submit">
-  </form>
+<form action="/php-platzi-portfolio/public/element/add" enctype="multipart/form-data" method="POST">
+        <label for="">Title:</label>
+        <input name="project_title" type="text"><br>
+        <label for="">Description:</label>
+        <input name="project_description" type="text"><br>
+        <label for="">Logo:</label>
+        <input name="project_logo" type="file"><br>
+        <input name="submit_project" type="submit" value="Submit">
+    </form>
 {% endblock %}
