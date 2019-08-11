@@ -10,9 +10,9 @@
     </div>
     <form action="/php-platzi-portfolio/public/user/add" method="POST">
         <label for="e-mail">email:</label>
-        <input name="email" type="email" id="e-mail"><br>
+        <input id="e-mail" name="email" placeholder="Type the e-mail" type="email"><br>
         <label for="pass">Password (8 characters minimum):</label>
-        <input name="password" type="password" id="pass" required minlength="8"><br>
+        <input name="password" type="password" id="pass" required minlength="8" placeholder="Type the password"><br>
         <input name="submit_user" type="submit" value="Sign up">
     </form>
 {% endblock %}
