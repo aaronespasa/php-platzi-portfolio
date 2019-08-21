@@ -1,5 +1,5 @@
 # PHP Portfolio
-A portfolio which works with PHP. It allows you to add new jobs and projects since the same page and also start session with your own account.
+A portfolio which works with PHP. It allows you to add new jobs and projects since the same page and also start a session with your own account.
 
 ### How to use it?
 1. You need to **run an Apache server and a MySQL database**: For this, you might install XAMPP, LAMP or WAMP (Depending on your OS)<br /><br />
